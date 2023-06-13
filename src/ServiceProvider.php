@@ -1,8 +1,8 @@
 <?php
 
-namespace Itiden\FathomAnalytics;
+namespace Itiden\FA;
 
-use App\Http\Controllers\FathomAnalyticsController;
+use App\Http\Controllers\FAController;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -21,7 +21,7 @@ class ServiceProvider extends AddonServiceProvider
     public function boot()
     {
         Statamic::pushCpRoutes(function () {
-            Route::get('/fathom-analytics', [FathomAnalyticsController::class, 'index'])->name('fathom-analytics');
+            Route::get('/fa', [FAController::class, 'index'])->name('fa');
         });
     }
 

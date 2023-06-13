@@ -4,7 +4,7 @@ namespace App\Widgets;
 
 use Statamic\Widgets\Widget;
 
-class FathomAnalytics extends Widget
+class FA extends Widget
 {
     /**
      * The HTML that should be shown in the widget.
@@ -13,6 +13,6 @@ class FathomAnalytics extends Widget
      */
     public function html()
     {
-        return view('widgets.fathom-analytics');
+        return view('widgets.fa');
     }
 }

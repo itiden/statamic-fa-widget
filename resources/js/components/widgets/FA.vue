@@ -13,7 +13,7 @@
         <a class="ml-8" href="https://www.usefathom.com" target="blank">
           <img
             src="./poweredbyfathom-black-nobg.png"
-            alt="fa badge"
+            alt="fathom analytics badge"
             width="180px"
           />
         </a>
@@ -129,7 +129,7 @@ export default {
   data() {
     return {
       listingKey: 'items',
-      requestUrl: cp_url(`fathom-analytics`),
+      requestUrl: cp_url(`fa`),
       perPage: 25,
       activeFilters: {
         interval: 'all',

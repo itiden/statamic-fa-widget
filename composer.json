@@ -12,17 +12,17 @@
   },
   "autoload": {
     "psr-4": {
-      "Itiden\\FathomAnalytics\\": "src"
+      "Itiden\\FA\\": "src"
     }
   },
   "extra": {
     "statamic": {
-      "name": "Fa Widget",
+      "name": "Statamic FA Widget",
       "description": "Addon to to add a widget with statistics from Fathom Analytics"
     },
     "laravel": {
       "providers": [
-        "Itiden\\FathomAnalytics\\ServiceProvider"
+        "Itiden\\FA\\ServiceProvider"
       ]
     }
   }

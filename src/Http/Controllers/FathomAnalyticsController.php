@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Http;
 use Statamic\Facades\Entry;
 use Statamic\Facades\Site;
 
-class FathomAnalyticsController extends Controller
+class FAController extends Controller
 {
     public function index(Request $request)
     {
@@ -28,16 +28,16 @@ class FathomAnalyticsController extends Controller
             default => null
         };
 
-        $response = Cache::remember('fathom' . $sortOrder . $interval, 60, fn () => Http::withToken(config('statamic.cp.fathom_api_token'))
+        $response = Cache::remember('fathom' . $sortOrder . $interval, 60, fn () => Http::withToken(config('statamic.cp.fa_api_token'))
             ->get('https://api.usefathom.com/v1/aggregations', [
                 'entity' => 'pageview',
-                'entity_id' => config('statamic.cp.fathom_site_id'),
+                'entity_id' => config('statamic.cp.fa_site_id'),
                 'aggregates' => 'visits, uniques, pageviews, avg_duration, bounce_rate',
                 'field_grouping' => 'hostname,pathname',
                 'limit' => 100,
                 'sort_by' => $sortOrder,
                 'date_from' => $interval,
-                'filters' => '[{"property":"hostname","operator":"is","value":"' . config('statamic.cp.fathom_hostname') . '"}]',
+                'filters' => '[{"property":"hostname","operator":"is","value":"' . config('statamic.cp.fa_hostname') . '"}]',
             ])
             ->collect());
 

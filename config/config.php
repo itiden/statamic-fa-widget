@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'fathom_api_token' => env('FATHOM_API_TOKEN', null),
-    'fathom_site_id' => env('FATHOM_SITE_ID', null),
-    'fathom_hostname' => env('FATHOM_HOSTNAME', null),
+    'fa_api_token' => env('FA_API_TOKEN', null),
+    'fa_site_id' => env('FA_SITE_ID', null),
+    'fa_hostname' => env('FA_HOSTNAME', null),
 ];
