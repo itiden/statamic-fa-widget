@@ -1,6 +1,6 @@
 <?php
 
-namespace Itiden\StatamicFathomAnalytics;
+namespace Itiden\FathomAnalytics;
 
 use App\Http\Controllers\FathomAnalyticsController;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Statamic\Statamic;
 use Statamic\Providers\AddonServiceProvider;
 
-class RouteServiceProvider extends AddonServiceProvider
+class ServiceProvider extends AddonServiceProvider
 {
 
     /**

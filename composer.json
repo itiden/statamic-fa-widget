@@ -22,7 +22,7 @@
     },
     "laravel": {
       "providers": [
-        "Itiden\\FathomAnalytics\\RouteServiceProvider"
+        "Itiden\\FathomAnalytics\\ServiceProvider"
       ]
     }
   }
