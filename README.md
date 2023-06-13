@@ -8,11 +8,22 @@ This is a Statamic widget that shows statistics from usefathom.com on your Stata
 
 You need to add the following variables to your `.env` file
 
-```
+```php
 FATHOM_API_TOKEN="your-fathom-api-token"
 FATHOM_SITE_ID="YOUR-SITE_ID"
 FATHOM_HOSTNAME="your-hostname"
 ```
+
+You also need to add the widget to the widget array in config/statamic/cp.php file, as you would with [any other widget](https://statamic.dev/widgets#configuration).
+
+```php
+[
+    'type' => 'fathom_analytics',
+    'width' => 100,
+],
+```
+
+We recommend you use the widget at 100 width.
 
 ## Disclaimer
 
