@@ -4,6 +4,12 @@ This is a Statamic widget that shows statistics from usefathom.com on your Stata
 
 ## How to install
 
+Require the addon using Composer
+
+```bash
+composer require itiden/statamic-fa-widget
+```
+
 ## How to use
 
 You need to add the following variables to your `.env` file
