@@ -15,7 +15,7 @@ class ServiceProvider extends AddonServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function bootAddon()
     {
         Statamic::pushCpRoutes(function () {
             Route::get('/fa', [FAController::class, 'index'])->name('fa');
