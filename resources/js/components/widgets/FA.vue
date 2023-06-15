@@ -11,11 +11,7 @@
           <span>Fathom Analytics</span>
         </h2>
         <a class="ml-8" href="https://www.usefathom.com" target="blank">
-          <img
-            src="./poweredbyfathom-black-nobg.png"
-            alt="fathom analytics badge"
-            width="180px"
-          />
+          <img src="./fa.png" alt="fathom analytics badge" width="180px" />
         </a>
       </div>
       <div class="flex flex-row-reverse items-center">
