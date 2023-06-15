@@ -21,4 +21,11 @@ class ServiceProvider extends AddonServiceProvider
             Route::get('/fa', [FAController::class, 'index'])->name('fa');
         });
     }
+
+    protected $vite = [
+        'input' => [
+            'resources/js/cp.js',
+        ],
+        'publicDirectory' => 'resources/dist',
+    ];
 }

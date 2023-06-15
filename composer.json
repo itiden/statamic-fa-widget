@@ -1,6 +1,8 @@
 {
   "name": "itiden/statamic-fa-widget",
   "description": "Statamic addon to add a widget with statistics from Fathom Analytics",
+  "license": "MIT",
+  "type": "statamic-addon",
   "keywords": [
     "laravel",
     "statamic",
