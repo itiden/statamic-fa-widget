@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Itiden\FA\Http\Controllers;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Statamic\Facades\Entry;
@@ -28,16 +29,16 @@ class FAController extends Controller
             default => null
         };
 
-        $response = Cache::remember('fathom' . $sortOrder . $interval, 60, fn () => Http::withToken(config('statamic.cp.fa_api_token'))
+        $response = Cache::remember('fathom' . $sortOrder . $interval, 60, fn () => Http::withToken(config('fa.fa_api_token'))
             ->get('https://api.usefathom.com/v1/aggregations', [
                 'entity' => 'pageview',
-                'entity_id' => config('statamic.cp.fa_site_id'),
+                'entity_id' => config('fa.fa_site_id'),
                 'aggregates' => 'visits, uniques, pageviews, avg_duration, bounce_rate',
                 'field_grouping' => 'hostname,pathname',
                 'limit' => 100,
                 'sort_by' => $sortOrder,
                 'date_from' => $interval,
-                'filters' => '[{"property":"hostname","operator":"is","value":"' . config('statamic.cp.fa_hostname') . '"}]',
+                'filters' => '[{"property":"hostname","operator":"is","value":"' . config('fa.fa_hostname') . '"}]',
             ])
             ->collect());
 

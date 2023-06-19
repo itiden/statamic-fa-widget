@@ -8,7 +8,7 @@
           <div class="h-6 w-6 mr-2 text-gray-800">
             <svg-icon name="telescope" class="text-gray-700 h-5 w-5" />
           </div>
-          <span>Fathom Analytics</span>
+          <span>Analytics</span>
         </h2>
         <a class="ml-8" href="https://www.usefathom.com" target="blank">
           <img src="./fa.png" alt="fathom analytics badge" width="180px" />
