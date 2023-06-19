@@ -36,6 +36,6 @@ class ServiceProvider extends AddonServiceProvider
             'resources/js/cp.js',
             'resources/js/components/widgets/fa.png'
         ],
-        'publicDirectory' => '/vendor/statamic-fa-widget',
+        'publicDirectory' => 'resources/dist',
     ];
 }

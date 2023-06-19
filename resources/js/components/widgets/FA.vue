@@ -96,7 +96,7 @@
     </p>
     <div class="flex justify-center py-4">
       <a class="ml-8" href="https://www.usefathom.com" target="blank">
-        <img src="./fa.png" alt="fa badge" width="100px" />
+        <img src="./fa.png" alt="fathom analytics badge" width="100px" />
       </a>
     </div>
   </div>
