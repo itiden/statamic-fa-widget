@@ -8,17 +8,8 @@ export default defineConfig({
             input: [
                 'resources/js/cp.js',
             ],
-            publicDirectory: '/vendor/statamic-fa-widget',
+            publicDirectory: 'resources/dist',
         }),
-        vue({
-          // This is needed, or else Vite will try to find image paths (which it wont be able to find because this will be called on the web, not directly)
-          // For example <img src="/images/logo.png"> will not work without the code below
-          template: {
-              transformAssetUrls: {
-                  base: null,
-                  includeAbsolute: false,
-              },
-          },
-        }),
+        vue(),
     ],
 });

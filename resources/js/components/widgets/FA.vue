@@ -3,12 +3,12 @@
     <div
       class="flex flex-col md:flex-row justify-between items-start md:items-center p-4"
     >
-        <h2 class="flex items-end justify-end mb-2 md:m-0">
-          <div class="h-6 w-6 mr-2 text-gray-800">
-            <svg-icon name="telescope" class="text-gray-700 h-5 w-5" />
-          </div>
-          <span>Analytics</span>
-        </h2>
+      <h2 class="flex items-end justify-end mb-2 md:m-0">
+        <div class="h-6 w-6 mr-2 text-gray-800">
+          <svg-icon name="telescope" class="text-gray-700 h-5 w-5" />
+        </div>
+        <span>Analytics</span>
+      </h2>
       <div class="flex flex-row-reverse items-center">
         <div class="flex shadow rounded">
           <button
@@ -94,12 +94,6 @@
     >
       {{ __('No analytics found') }}
     </p>
-    <div class="flex justify-center py-4">
-      <a class="ml-8" href="https://www.usefathom.com" target="blank">
-        <img src="./fa.png" alt="fathom analytics badge" width="100px" />
-      </a>
-    </div>
-  </div>
   </div>
 </template>
 

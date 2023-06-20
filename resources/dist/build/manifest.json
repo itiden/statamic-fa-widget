@@ -1,20 +1,13 @@
 {
-  "resources/js/components/widgets/fa.png": {
-    "file": "assets/fa-69b45e7f.png",
-    "src": "resources/js/components/widgets/fa.png"
-  },
   "resources/js/cp.css": {
-    "file": "assets/cp-c2cb33ae.css",
+    "file": "assets/cp-dff2c765.css",
     "src": "resources/js/cp.css"
   },
   "resources/js/cp.js": {
-    "assets": [
-      "assets/fa-69b45e7f.png"
-    ],
     "css": [
-      "assets/cp-c2cb33ae.css"
+      "assets/cp-dff2c765.css"
     ],
-    "file": "assets/cp-f79b99c9.js",
+    "file": "assets/cp-073e1673.js",
     "isEntry": true,
     "src": "resources/js/cp.js"
   }
