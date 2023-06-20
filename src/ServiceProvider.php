@@ -34,7 +34,6 @@ class ServiceProvider extends AddonServiceProvider
     protected $vite = [
         'input' => [
             'resources/js/cp.js',
-            'resources/js/components/widgets/fa.png'
         ],
         'publicDirectory' => 'resources/dist',
     ];
