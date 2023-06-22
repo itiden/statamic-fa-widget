@@ -32,6 +32,16 @@ class ServiceProvider extends AddonServiceProvider
         ]);
     }
 
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/fa.php', 'fa'
+        );
+    }
+
     protected $vite = [
         'input' => [
             'resources/js/cp.js',
