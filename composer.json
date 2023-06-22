@@ -29,7 +29,7 @@
       ]
     },
     "download-dist": {
-      "url": "https://github.com/itiden/statamic-fa-widget/releases/{$version}/dist.tar.gz",
+      "url": "https://github.com/itiden/statamic-fa-widget/releases/download/{$version}/dist.tar.gz",
       "path": "resources/dist"
     }
   },
