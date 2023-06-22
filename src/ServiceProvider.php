@@ -2,14 +2,19 @@
 
 namespace Itiden\FA;
 
-use App\Http\Controllers\FAController;
+use Itiden\FA\Http\Controllers\FAController;
 use Illuminate\Support\Facades\Route;
 use Statamic\Statamic;
 use Statamic\Providers\AddonServiceProvider;
+use Itiden\FA\Widgets\FA;
 
 class ServiceProvider extends AddonServiceProvider
 {
+    protected $viewNamespace = 'fa_widget';
 
+    protected $widgets = [
+        FA::class
+    ];
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      *
@@ -20,6 +25,10 @@ class ServiceProvider extends AddonServiceProvider
         Statamic::pushCpRoutes(function () {
             Route::get('/fa', [FAController::class, 'index'])->name('fa');
         });
+
+        $this->publishes([
+            __DIR__ . '/../config/fa.php' => config_path('fa.php'),
+        ]);
     }
 
     protected $vite = [

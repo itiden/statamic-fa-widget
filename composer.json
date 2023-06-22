@@ -10,7 +10,8 @@
   ],
   "require": {
     "php": "^8.0",
-    "statamic/cms": "^3.1 || ^4.0"
+    "statamic/cms": "^3.1 || ^4.0",
+    "pixelfear/composer-dist-plugin": "^0.1.4"
   },
   "autoload": {
     "psr-4": {
@@ -26,6 +27,15 @@
       "providers": [
         "Itiden\\FA\\ServiceProvider"
       ]
+    },
+    "download-dist": {
+      "url": "https://github.com/itiden/statamic-fa-widget/releases/{$version}/dist.tar.gz",
+      "path": "resources/dist"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pixelfear/composer-dist-plugin": true
     }
   }
 }

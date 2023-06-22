@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Widgets;
+namespace Itiden\FA\Widgets;
 
 use Statamic\Widgets\Widget;
 
 class FA extends Widget
 {
+    public static $handle = 'statamic-fa-widget';
     /**
      * The HTML that should be shown in the widget.
      *
@@ -13,6 +14,6 @@ class FA extends Widget
      */
     public function html()
     {
-        return view('widgets.fa');
+        return view('fa_widget::widgets.fa');
     }
 }
