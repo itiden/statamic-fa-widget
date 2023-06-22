@@ -24,7 +24,7 @@ You also need to add the widget to the widget array in config/statamic/cp.php fi
 
 ```php
 [
-    'type' => 'fa_widget',
+    'type' => 'fa',
     'width' => 100,
 ],
 ```
