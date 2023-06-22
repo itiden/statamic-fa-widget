@@ -1,6 +1,6 @@
-# statamic-fa-widget
+# Statamic FA Widget
 
-This is a Statamic widget that shows statistics from usefathom.com on your Statamic dashboard. Developed by itiden.
+This is a Statamic widget that shows statistics from Fathom Analytics on your Statamic dashboard. Developed by [Itiden](https://www.itiden.se/en).
 
 ## How to install
 
@@ -14,7 +14,7 @@ composer require itiden/statamic-fa-widget
 
 You need to add the following variables to your `.env` file
 
-```php
+```Dotenv
 FA_API_TOKEN="your-fathom-api-token"
 FA_SITE_ID="YOUR-SITE_ID"
 FA_HOSTNAME="your-hostname"
@@ -30,6 +30,11 @@ You also need to add the widget to the widget array in config/statamic/cp.php fi
 ```
 
 We recommend you use the widget at 100 width.
+
+## API Notice
+
+The Fathom Analytics API is in a early access phase and might change causing this addon to fail.  
+We will do our best to make sure it is updated when the API changes.
 
 ## Disclaimer
 
