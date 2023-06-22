@@ -6,7 +6,7 @@ use Statamic\Widgets\Widget;
 
 class FA extends Widget
 {
-    public static $handle = 'statamic-fa-widget';
+    public static $handle = 'fa_widget';
 
     /**
      * The HTML that should be shown in the widget.
