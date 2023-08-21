@@ -38,7 +38,9 @@ class FAController extends Controller
                 'limit' => 100,
                 'sort_by' => $sortOrder,
                 'date_from' => $interval,
-                'filters' => '[{"property":"hostname","operator":"is","value":"' . config('fa.fa_hostname') . '"}]',
+                'filters' => config('fa.fa_hostname')
+                    ? '[{"property":"hostname","operator":"is","value":"' . config('fa.fa_hostname') . '"}]'
+                    : '',
             ])
             ->collect());
 
