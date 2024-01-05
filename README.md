@@ -18,6 +18,8 @@ You need to add the following variables to your `.env` file
 FA_API_TOKEN="your-fathom-api-token"
 FA_SITE_ID="YOUR-SITE_ID"
 FA_HOSTNAME="your-hostname"
+FA_SHARE_URL="" # if you're using a share URL
+FA_SHARE_PASSWORD="" # if you're using a share URL with password
 ```
 
 You also need to add the widget to the widget array in config/statamic/cp.php file, as you would with [any other widget](https://statamic.dev/widgets#configuration).
