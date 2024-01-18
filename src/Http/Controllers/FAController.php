@@ -51,6 +51,10 @@ class FAController extends Controller
             ])
             ->collect());
 
+        if ($response->has('errors')) {
+            throw new \Exception('Something went wrong when getting analytics data');
+        }
+
         $editedResponse = $response->map(function ($item) {
             if ($item['pathname'] != '/' && str_ends_with($item['pathname'], '/')) {
                 $item['pathname'] = rtrim($item['pathname'], '/');
