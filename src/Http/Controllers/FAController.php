@@ -29,6 +29,9 @@ class FAController extends Controller
             default => null
         };
 
+        /**
+         * @var \Illuminate\Support\Collection $response
+         */
         $response = Cache::remember('fathom' . $sortOrder . $interval, 60, fn () => Http::withToken(config('fa.api_token'))
             ->get('https://api.usefathom.com/v1/aggregations', [
                 'entity' => 'pageview',
@@ -38,7 +41,13 @@ class FAController extends Controller
                 'limit' => 100,
                 'sort_by' => $sortOrder,
                 'date_from' => $interval,
-                'filters' => '[{"property":"hostname","operator":"is","value":"' . config('fa.hostname') . '"}]',
+                'filters' => json_encode([
+                    [
+                        'property' => 'hostname',
+                        'operator' => 'is',
+                        'value' => config('fa.hostname'),
+                    ],
+                ]),
             ])
             ->collect());
 
@@ -55,11 +64,13 @@ class FAController extends Controller
             ];
         });
 
-        $perPage = $request->input('perPage') ?? 10;
-        $editedResponse = $editedResponse->all();
-        $items = array_slice($editedResponse, (request('page', 1) - 1) * $perPage, $perPage);
+        $perPage = $request->input('perPage', 10);
 
-        $results = new LengthAwarePaginator($items, count($editedResponse), $perPage, request('page', 1));
+        $results = new LengthAwarePaginator(
+            $editedResponse->slice(($request->input('page', 1) - 1) * $perPage, $perPage),
+            $editedResponse->count(),
+            $perPage,
+        );
 
         return [
             ...$results->toArray(),
