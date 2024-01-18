@@ -38,7 +38,8 @@ class ServiceProvider extends AddonServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/fa.php', 'fa'
+            __DIR__ . '/../config/fa.php',
+            'fa'
         );
     }
 

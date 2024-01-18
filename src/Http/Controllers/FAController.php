@@ -29,16 +29,16 @@ class FAController extends Controller
             default => null
         };
 
-        $response = Cache::remember('fathom' . $sortOrder . $interval, 60, fn () => Http::withToken(config('fa.fa_api_token'))
+        $response = Cache::remember('fathom' . $sortOrder . $interval, 60, fn () => Http::withToken(config('fa.api_token'))
             ->get('https://api.usefathom.com/v1/aggregations', [
                 'entity' => 'pageview',
-                'entity_id' => config('fa.fa_site_id'),
+                'entity_id' => config('fa.site_id'),
                 'aggregates' => 'visits, uniques, pageviews, avg_duration, bounce_rate',
                 'field_grouping' => 'hostname,pathname',
                 'limit' => 100,
                 'sort_by' => $sortOrder,
                 'date_from' => $interval,
-                'filters' => '[{"property":"hostname","operator":"is","value":"' . config('fa.fa_hostname') . '"}]',
+                'filters' => '[{"property":"hostname","operator":"is","value":"' . config('fa.hostname') . '"}]',
             ])
             ->collect());
 
