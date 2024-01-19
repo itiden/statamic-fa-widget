@@ -30,6 +30,8 @@ php artisan vendor:publish --tag="fa-widget-config"
 
 Then add your hostnames in the "hostnames" array (if empty, it will get for all)
 
+> If you have multiple hostnames there may appear to be "duplicate" entries, but they are not because they are pointing to different hostnames.
+
 ```php
 'hostnames' => [
     'https://my-hostname.com'
