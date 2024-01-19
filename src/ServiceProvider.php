@@ -29,7 +29,7 @@ class ServiceProvider extends AddonServiceProvider
 
         $this->publishes([
             __DIR__ . '/../config/fa.php' => config_path('fa.php'),
-        ]);
+        ], 'fa-widget-config');
     }
 
     /**
