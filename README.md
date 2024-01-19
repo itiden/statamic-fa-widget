@@ -20,6 +20,25 @@ FA_SITE_ID="YOUR-SITE_ID"
 FA_HOSTNAME="your-hostname"
 ```
 
+You can also manage your hostnames in the config file:
+
+Start by publishing the config
+
+```sh
+php artisan vendor:publish --tag="fa-widget-config"
+```
+
+Then add your hostnames in the "hostnames" array (if empty, it will get for all)
+
+> If you have multiple hostnames there may appear to be "duplicate" entries, but they are not because they are pointing to different hostnames.
+
+```php
+'hostnames' => [
+    'https://my-hostname.com'
+    'https://my-other-hostname.com'
+]
+```
+
 You also need to add the widget to the widget array in config/statamic/cp.php file, as you would with [any other widget](https://statamic.dev/widgets#configuration).
 
 ```php

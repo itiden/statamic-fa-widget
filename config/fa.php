@@ -1,7 +1,10 @@
 <?php
 
 return [
-    'fa_api_token' => env('FA_API_TOKEN', null),
-    'fa_site_id' => env('FA_SITE_ID', null),
-    'fa_hostname' => env('FA_HOSTNAME', null),
+    'api_token' => env('FA_API_TOKEN', null),
+    'site_id' => env('FA_SITE_ID', null),
+    'hostnames' => [
+        env('FA_HOSTNAME'),
+    ],
+    'share_url' => env('FA_SHARE_URL', null),
 ];

@@ -4,6 +4,7 @@ namespace Itiden\FA\Http\Controllers;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Routing\Controller;
@@ -29,18 +30,32 @@ class FAController extends Controller
             default => null
         };
 
-        $response = Cache::remember('fathom' . $sortOrder . $interval, 60, fn () => Http::withToken(config('fa.fa_api_token'))
+        /**
+         * @var \Illuminate\Support\Collection $response
+         */
+        $response = Cache::remember('fathom' . $sortOrder . $interval, 60, fn () => Http::withToken(config('fa.api_token'))
             ->get('https://api.usefathom.com/v1/aggregations', [
                 'entity' => 'pageview',
-                'entity_id' => config('fa.fa_site_id'),
+                'entity_id' => config('fa.site_id'),
                 'aggregates' => 'visits, uniques, pageviews, avg_duration, bounce_rate',
                 'field_grouping' => 'hostname,pathname',
                 'limit' => 100,
                 'sort_by' => $sortOrder,
                 'date_from' => $interval,
-                'filters' => '[{"property":"hostname","operator":"is","value":"' . config('fa.fa_hostname') . '"}]',
+                'filters' => json_encode(collect(config('fa.hostnames'))->filter()->map(
+                    fn ($hostname) =>
+                    [
+                        'property' => 'hostname',
+                        'operator' => 'is',
+                        'value' => $hostname,
+                    ],
+                )),
             ])
             ->collect());
+
+        if ($response->has('errors')) {
+            throw new Exception('Something went wrong when getting analytics data');
+        }
 
         $editedResponse = $response->map(function ($item) {
             if ($item['pathname'] != '/' && str_ends_with($item['pathname'], '/')) {
@@ -55,11 +70,13 @@ class FAController extends Controller
             ];
         });
 
-        $perPage = $request->input('perPage') ?? 10;
-        $editedResponse = $editedResponse->all();
-        $items = array_slice($editedResponse, (request('page', 1) - 1) * $perPage, $perPage);
+        $perPage = $request->input('perPage', 10);
 
-        $results = new LengthAwarePaginator($items, count($editedResponse), $perPage, request('page', 1));
+        $results = new LengthAwarePaginator(
+            $editedResponse->slice(($request->input('page', 1) - 1) * $perPage, $perPage),
+            $editedResponse->count(),
+            $perPage,
+        );
 
         return [
             ...$results->toArray(),
