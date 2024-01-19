@@ -42,13 +42,14 @@ class FAController extends Controller
                 'limit' => 100,
                 'sort_by' => $sortOrder,
                 'date_from' => $interval,
-                'filters' => json_encode(collect(config('fa.hostnames'))->filter()->map(fn ($hostname) => [
+                'filters' => json_encode(collect(config('fa.hostnames'))->filter()->map(
+                    fn ($hostname) =>
                     [
                         'property' => 'hostname',
                         'operator' => 'is',
                         'value' => $hostname,
                     ],
-                ])),
+                )),
             ])
             ->collect());
 
