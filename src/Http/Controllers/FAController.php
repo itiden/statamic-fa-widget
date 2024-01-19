@@ -4,6 +4,7 @@ namespace Itiden\FA\Http\Controllers;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Routing\Controller;
@@ -41,18 +42,18 @@ class FAController extends Controller
                 'limit' => 100,
                 'sort_by' => $sortOrder,
                 'date_from' => $interval,
-                'filters' => json_encode([
+                'filters' => json_encode(collect(config('fa.hostnames'))->filter()->map(fn ($hostname) => [
                     [
                         'property' => 'hostname',
                         'operator' => 'is',
-                        'value' => config('fa.hostname'),
+                        'value' => $hostname,
                     ],
-                ]),
+                ])),
             ])
             ->collect());
 
         if ($response->has('errors')) {
-            throw new \Exception('Something went wrong when getting analytics data');
+            throw new Exception('Something went wrong when getting analytics data');
         }
 
         $editedResponse = $response->map(function ($item) {
