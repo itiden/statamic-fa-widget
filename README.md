@@ -17,27 +17,16 @@ You need to add the following variables to your `.env` file
 ```Dotenv
 FA_API_TOKEN="your-fathom-api-token"
 FA_SITE_ID="YOUR-SITE_ID"
-FA_HOSTNAME="your-hostname"
+FA_HOSTNAME="your-hostname-optional"
 ```
 
-You can also manage your hostnames in the config file:
-
-Start by publishing the config
+You can also manage your settings in the configuration file by publishing it:
 
 ```sh
 php artisan vendor:publish --tag="fa-widget-config"
 ```
 
-Then add your hostnames in the "hostnames" array (if empty, it will get for all)
-
-> If you have multiple hostnames there may appear to be "duplicate" entries, but they are not because they are pointing to different hostnames.
-
-```php
-'hostnames' => [
-    'https://my-hostname.com'
-    'https://my-other-hostname.com'
-]
-```
+If you don't set a hostname, your results will be for all hostnames your site has.
 
 You also need to add the widget to the widget array in config/statamic/cp.php file, as you would with [any other widget](https://statamic.dev/widgets#configuration).
 
@@ -54,6 +43,8 @@ We recommend you use the widget at 100 width.
 
 The Fathom Analytics API is in a early access phase and might change causing this addon to fail.  
 We will do our best to make sure it is updated when the API changes.
+
+The fathom analytics API don't yet support filtering for multiple hostnames, so for now only the first will be used.
 
 ## Disclaimer
 
